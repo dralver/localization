@@ -10,10 +10,6 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-Route::get('/lang/{locale?}', [
-    'uses' => 'HomeController@changeLang'
-]);
-
 Route::group(['middleware' => 'gettext'], function() {
     Route::localizedGroup(function () {
         Route::get('/', function () {
@@ -26,6 +22,9 @@ Route::group(['middleware' => 'gettext'], function() {
         Route::get('/login', 'Auth\LoginController@showLoginForm');
     });
 });
+Route::post('locale/upload', 'LocalizationController@upload');
+Route::get('locale/pot', 'LocalizationController@getPotFile');
+Route::resource('locale', 'LocalizationController');
 
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/password/reset', 'Auth\LoginController@login')->name('password.request');
