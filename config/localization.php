@@ -6,7 +6,7 @@ return [
      | -----------------------------------------------------------------
      */
 
-    'supported-locales'      => ['en', 'bg', 'en-US'],
+    'supported-locales'      => ['en', 'bg', 'en-US', 'fr'],
 
     'accept-language-header' => true,
 

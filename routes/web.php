@@ -11,7 +11,16 @@
   |
  */
 Route::group(['middleware' => 'gettext'], function() {
-    Route::localizedGroup(function () {
+    Route::group([
+        'prefix' => Localization::setLocale(),
+        'middleware' => [
+            'localization-session-redirect',
+            'localization-cookie-redirect',
+            'my-localization-redirect',
+//            'localized-routes',
+//            'translation-redirect',
+        ],
+            ], function() {
         Route::get('/', function () {
             return view('welcome');
         });
